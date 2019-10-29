@@ -1,13 +1,18 @@
 # jupyterhub によるpython初心者講習環境の構築 
 
-注意：　セキュリティは全く考慮されていません
+やりたいこと
 
-**環境:**<br>
-GCP ubuntu-1604-xenial-v20190913
+- LDAP認証によるユーザー管理
+- dockerspwanerによるシングルjupyterサーバーの生成
+- jupyterlabの使用
+- デフォルトノートブックの配置
 
 <br>
 
 ### VMインスタンスの作成/接続
+
+**環境:**<br>
+GCP ubuntu-1604-xenial-v20190913
 
 **インスタンス作成/接続：**<br>
 1. HTTP, HTTPSトラフィックを許可するにチェックしてインスタンス作成
@@ -20,26 +25,19 @@ GCP ubuntu-1604-xenial-v20190913
 
 ### python環境の構築 
 
-`cd ~ && sudo apt-get update && sudo apt-get upgrade`
+ソースコードからpythonをインストールします
 
-`sudo apt install build-essential libbz2-dev libdb-dev \
- libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
- libncursesw5-dev libsqlite3-dev libssl-dev \
- zlib1g-dev uuid-dev tk-dev`
+`bash prep_python.sh`
 
-`wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz`
+<br>
 
-`tar xzf Python-3.7.4.tgz && cd Python-3.7.4`
+### JupyterHubのインストール
 
-`./configure --enable-optimizations && make`
-
-`sudo make altinstall`
-
-> make installはシステムのpython3を書き換える？
-
-`wget https://bootstrap.pypa.io/get-pip.py | sudo python3.7`
-
-`pip install pipenv`
+参考：<br>
+https://github.com/jupyterhub/dockerspawner
 
 `mkdir ~/jupyterhub && cd ~/jupyterhub`
 
+`bash install_jupyterhub.sh`
+
+### aaa 
