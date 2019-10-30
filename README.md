@@ -48,6 +48,8 @@ apt-getからdockerとnpmなどのインストールを行います
 
 <br>
 
+#### npm関連
+
 【注意】<br>
 公式ドキュメントではapt-getでnpmとnodejs-legacyをインストールすればよいと書いてありますがubuntu16.04環境だとjupytehubの起動時に以下のようなエラーでこけます。
 ```
@@ -67,7 +69,6 @@ horo@hubtest2:~/jupyterhub$ which -a configurable-http-proxy
 horo@hubtest2:~/jupyterhub$ configurable-http-proxy --ip 0.0.0.0 --port 443
 /usr/local/lib/node_modules/configurable-http-proxy/node_modules/winston/lib/winston.js:11
 const { warn } = require('./winston/common');
-      ^
 ```
 
 以下のIsuueを参考にnodejsをインストールすることで解決しました<br>
@@ -77,6 +78,12 @@ https://github.com/jupyterhub/jupyterhub/issues/530
 curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install -y nodejs
 ```
+
+#### dockerのインストール
+
+正常にインストールできてるかテスト<br>
+`sudo docker run hello-world`
+
 
 <br>
 
@@ -88,7 +95,7 @@ pipenvで作成した環境内へインストールします
 
 `bash prep_jupyterhub.sh`
 
-### 起動テスト
+## 中間起動テスト
 認証やspawnerの設定はしていないがとりあえず起動テスト
 
 `cd ~/jupyterhub && pipenv run jupyterhub --no-ssl`
@@ -96,6 +103,12 @@ pipenvで作成した環境内へインストールします
 ブラウザで http://YOUR_IP:8000/ へアクセス
 
 <br>
+
+## DockerSpawnerの設定
+
+
+<br>
+
 ## バックグラウンドでサービス化
 
 `nohup jupyterhub --no-ssl &`

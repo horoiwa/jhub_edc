@@ -8,3 +8,5 @@ sudo npm install -g configurable-http-proxy
 
 #: テストのためにインストール
 pipenv install notebook
+
+pipenv install dockerspawner
